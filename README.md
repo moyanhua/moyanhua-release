@@ -5,6 +5,9 @@
 ![framework](https://img.shields.io/badge/framework-Magisk%20%7C%20KernelSU%20%7C%20APatch-orange)
 ![license](https://img.shields.io/badge/license-Apache--2.0-lightgrey)
 
+[![下载 v1.4.9](https://img.shields.io/badge/%E2%AC%87%20%E4%B8%8B%E8%BD%BD%20v1.4.9-126.6%20MiB-brightgreen?style=for-the-badge)](https://github.com/moyanhua/moyanhua-release/releases/download/v1.4.9/moyanhua-1.4.9-20260918-myh-hotplug.zip)
+[![全部版本](https://img.shields.io/badge/%E5%85%A8%E9%83%A8%E7%89%88%E6%9C%AC-Releases-blue?style=for-the-badge)](https://github.com/moyanhua/moyanhua-release/releases)
+
 > 在天原作比翼鸟，于地原作连理枝
 
 莫言花是一个面向 **Android 11+ / ARM64** 的性能与调度调优模块（Magisk / KernelSU / APatch）。
@@ -14,6 +17,10 @@
 `/data/adb/.config/moyanhua/` 下的配置文件里，**改文件即热重载**，不必重启守护进程。
 
 **本仓库只发布安装包（Releases 附件），不包含源码。**
+
+> 为什么安装包不放在仓库文件里？GitHub 规定**单个文件不得超过 100 MiB**，而本模块的 APK 解压后
+> 约 201 MiB、整包解压合计约 241 MiB，无法作为仓库文件提交。因此安装包统一以 **Release 附件**发布，
+> 点击上方绿色按钮即可直接下载；`Code → Download ZIP` 只会打包仓库里的说明文件，不含安装包。
 
 ---
 
@@ -73,12 +80,11 @@ MoyanHua Load Governor：按 `/proc/stat` 逐核差分算出实时利用率，�
 
 ## 下载
 
-前往 **[Releases](https://github.com/moyanhua/moyanhua-release/releases)** 下载最新版本的
-`moyanhua-<版本>-<日期>-<标记>.zip`。当前最新：
-
 | 版本 | 文件 | 大小 |
 | --- | --- | --- |
 | [v1.4.9](https://github.com/moyanhua/moyanhua-release/releases/tag/v1.4.9) | [moyanhua-1.4.9-20260918-myh-hotplug.zip](https://github.com/moyanhua/moyanhua-release/releases/download/v1.4.9/moyanhua-1.4.9-20260918-myh-hotplug.zip) | 126.6 MiB |
+
+历史版本见 **[Releases](https://github.com/moyanhua/moyanhua-release/releases)**。
 
 ## 安装
 
@@ -227,6 +233,10 @@ FAS 默认的保守升频也意味着「不轻易拉满」。
 **Q：模块会不会和系统自带的性能调度打架？**
 A：`fas.engine` 设为 `system` 时模块完全不碰频率节点；墓碑的冻结会与系统「暂停执行已缓存」仲裁，
 两条路径写的是同一个 `cgroup.freeze`，不会互相覆盖。
+
+**Q：为什么安装包不在仓库文件里、点 Code 下载不到？**
+A：GitHub 规定仓库单文件不得超过 100 MiB，本模块 APK 解压后约 201 MiB，塞不进去。
+安装包以 Release 附件发布，点本文顶部的绿色按钮或到 Releases 页下载即可。
 
 ## 已知限制
 
