@@ -1,4 +1,4 @@
-# 鑾█鑺?路 MoyanHua
+# 莫言花调度 MoyanHua
 
 ![version](https://img.shields.io/badge/version-1.4.9-blue)
 ![platform](https://img.shields.io/badge/platform-Android%2011%2B%20%C2%B7%20ARM64-green)
