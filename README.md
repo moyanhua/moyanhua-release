@@ -59,20 +59,20 @@ zip 内每个文件都带一个同名的 `.sha256`（内容为裸哈希，无换
 
 ```bash
 # 查看包内期望值
-unzip -p moyanhua-1.4.9-20260919-myh-nocap.zip moyanhua.apk.sha256
+unzip -p moyanhua-1.4.9-20260919-myh-nocap2.zip moyanhua.apk.sha256
 
 # 与本机实际值比对
 sha256sum moyanhua.apk
-unzip -p moyanhua-1.4.9-20260919-myh-nocap.zip libs/arm64-v8a/sys.moyanhua-service.sha256
+unzip -p moyanhua-1.4.9-20260919-myh-nocap2.zip libs/arm64-v8a/sys.moyanhua-service.sha256
 sha256sum libs/arm64-v8a/sys.moyanhua-service
 ```
 
 本次发布包的整包校验值：
 
 ```
-moyanhua-1.4.9-20260919-myh-nocap.zip
-SHA-256  57570a91a8661e2bfd810c07d58cbafe0208520dde1381f9ce341f630f6c6b80
-大小     102,365,379 字节
+moyanhua-1.4.9-20260919-myh-nocap2.zip
+SHA-256  096fff800e6e16d59aa3e710f0dbb36d28eb0f115f2dce7a6dc40e17d503651e
+大小     102,370,171 字节
 ```
 
 ## 已知限制
