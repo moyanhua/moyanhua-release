@@ -44,7 +44,8 @@
   上限饱和自愈、息屏 Doze、无交互降频（静置时把下限直接放开，含用户配过的逐簇下限）、
   以及 `target_loads` 升频曲线旋钮。不关核心：静置只放开频率下限，核心数交给系统。
   不人工封顶：`perf_ceil` 只夹「我们自己写下去的下限最高抬到哪」，不改内核 `scaling_max_freq`；
-  要封顶请用 `freq_cap` / `freq_cap_touch`（绝对 kHz、逐簇、默认 0 = 不封）。
+  真封顶有两条路 —— `freq_cap` / `freq_cap_touch`（绝对 kHz、逐簇），或逐档的 `max_cap`
+  （比例、仅 `freq_mode = auto` 生效），两者默认都是 0 = 不封，取值更低者。
 - **墓碑（进程冻结）**：由 root 守护进程执行，无需 LSPosed。cgroup v2 / v1 / SIGSTOP 三级自动探测与回退，
   息屏冻结、后台冻结、前台自动解冻、新进程冻结；崩溃自愈（遗留冻结状态开机自动兜底解冻），
   并提供实时「已冻结」显示器（冻结时长、真实 RSS、是否被系统放开）。
@@ -59,20 +60,20 @@ zip 内每个文件都带一个同名的 `.sha256`（内容为裸哈希，无换
 
 ```bash
 # 查看包内期望值
-unzip -p moyanhua-1.4.9-20260919-myh-nocap2.zip moyanhua.apk.sha256
+unzip -p moyanhua-1.4.9-20260919-myh-params3.zip moyanhua.apk.sha256
 
 # 与本机实际值比对
 sha256sum moyanhua.apk
-unzip -p moyanhua-1.4.9-20260919-myh-nocap2.zip libs/arm64-v8a/sys.moyanhua-service.sha256
+unzip -p moyanhua-1.4.9-20260919-myh-params3.zip libs/arm64-v8a/sys.moyanhua-service.sha256
 sha256sum libs/arm64-v8a/sys.moyanhua-service
 ```
 
 本次发布包的整包校验值：
 
 ```
-moyanhua-1.4.9-20260919-myh-nocap2.zip
-SHA-256  096fff800e6e16d59aa3e710f0dbb36d28eb0f115f2dce7a6dc40e17d503651e
-大小     102,370,171 字节
+moyanhua-1.4.9-20260919-myh-params3.zip
+SHA-256  79aae76ec01569af79341f475a8450e2bb2dae899ce78ac6ac720d8ff05f5184
+大小     102,369,894 字节
 ```
 
 ## 已知限制
