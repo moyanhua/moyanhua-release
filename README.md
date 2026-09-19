@@ -41,7 +41,8 @@
 - **MYH 用户态调速器**：内置的用户态负载调速器（MoyanHua Load Governor），按 `/proc/stat` 逐核差分
   算出实时利用率，自主决定每簇上下限，与系统 governor（walt / schedutil）协同。支持 `band` / `floor` /
   `lock` / `rate_limit` 四种接管方式、省电·均衡·性能·极速四档预置（每档再带 4 个强度小档位：保守 / 标准 /
-  激进 / 极限，选中即整组铺参数）、快升慢降与迟滞防抖、尖峰抑制、
+  激进 / 极限，共 16 套预制 —— 每一套都带自己的**频率地板 + 下限封顶**与响应速度，两两不同，
+  选中即整组铺进配置，地板一律不给 0）、快升慢降与迟滞防抖、尖峰抑制、
   上限饱和自愈、息屏 Doze、无交互降频（静置时把下限直接放开，含用户配过的逐簇下限）、
   以及 `target_loads` 升频曲线旋钮。不关核心：静置只放开频率下限，核心数交给系统。
   不人工封顶：`perf_ceil` 只夹「我们自己写下去的下限最高抬到哪」，不改内核 `scaling_max_freq`；
@@ -61,20 +62,20 @@ zip 内每个文件都带一个同名的 `.sha256`（内容为裸哈希，无换
 
 ```bash
 # 查看包内期望值
-unzip -p moyanhua-1.4.9-20260919-myh-strength.zip moyanhua.apk.sha256
+unzip -p moyanhua-1.4.9-20260919-myh-strength2.zip moyanhua.apk.sha256
 
 # 与本机实际值比对
 sha256sum moyanhua.apk
-unzip -p moyanhua-1.4.9-20260919-myh-strength.zip libs/arm64-v8a/sys.moyanhua-service.sha256
+unzip -p moyanhua-1.4.9-20260919-myh-strength2.zip libs/arm64-v8a/sys.moyanhua-service.sha256
 sha256sum libs/arm64-v8a/sys.moyanhua-service
 ```
 
 本次发布包的整包校验值：
 
 ```
-moyanhua-1.4.9-20260919-myh-strength.zip
-SHA-256  874067467d6044d521a45eec16db186d73e5887da0b2f575c587f7b1e03abc15
-大小     102,371,922 字节
+moyanhua-1.4.9-20260919-myh-strength2.zip
+SHA-256  83f7e6dcea7e9c5b35a08780a85091985a93a8579cbb68d2ff8900405e94d5df
+大小     102,369,914 字节
 ```
 
 ## 已知限制
